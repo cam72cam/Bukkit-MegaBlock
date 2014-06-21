@@ -135,4 +135,25 @@ public class MegaStructureTemplate {
 		}
 		return blocks;
 	}
+
+	public List<List<Block>> getAllLevels(Block origin, CoordSpace space) {
+		List<List<Block>> blocks = new ArrayList<List<Block>>();
+		
+		for (int i = 0; i < structure.length; i ++) {
+			List<Block> blockLevel = new ArrayList<Block>();
+			List<Material>[][] level = structure[i];
+			for (int j = 0; j < level.length; j++) {
+				List<Material>[] row = level[j];
+				for (int k = 0; k < row.length; k++) {
+					Block curr = origin
+						.getRelative(BlockFace.UP, i)
+						.getRelative(space.Row(), j)
+						.getRelative(space.Col(), k);
+					blockLevel.add(curr);
+				}
+			}
+			blocks.add(blockLevel);
+		}
+		return blocks;
+	}
 }

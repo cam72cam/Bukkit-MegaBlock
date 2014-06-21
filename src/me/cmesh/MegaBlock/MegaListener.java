@@ -1,6 +1,5 @@
 package me.cmesh.MegaBlock;
 
-import org.bukkit.Location;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -9,12 +8,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public interface MegaListener {
 	public class Event<T extends Cancellable > {
 		public T event;
-		public Location origin;
-		public MegaStructureTemplate structure;
+		public MegaStructure structure;
 		
-		public Event(T event, Location origin, MegaStructureTemplate s) {
+		public Event(T event, MegaStructure s) {
 			this.event = event;
-			this.origin = origin;
 			this.structure = s;
 		}
 	}
